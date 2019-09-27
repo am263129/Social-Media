@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="90"
+        android:centerColor="@color/flatui_silver"
+        android:endColor="@color/flatui_silver"
+        android:startColor="@color/flatui_silver" />
+
+    <corners android:radius="10dp" />
+</shape>
