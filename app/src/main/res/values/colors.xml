@@ -66,4 +66,5 @@
     <color name="badge_background_color">#2da346</color>
 
     <color name="acrionbar_primary">#EB7066</color>
+    <color name="material_gray_300">#ff5e52</color>
 </resources>

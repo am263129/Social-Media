@@ -9,8 +9,6 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.firebase.uidemo.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -33,14 +31,14 @@ public class ChatHolder extends RecyclerView.ViewHolder {
 
     public ChatHolder(@NonNull View itemView) {
         super(itemView);
-        mNameField = itemView.findViewById(R.id.ch);
+        mNameField = itemView.findViewById(R.id.name_text);
         mTextField = itemView.findViewById(R.id.message_text);
         mLeftArrow = itemView.findViewById(R.id.left_arrow);
         mRightArrow = itemView.findViewById(R.id.right_arrow);
         mMessageContainer = itemView.findViewById(R.id.message_container);
         mMessage = itemView.findViewById(R.id.message);
-        mGreen300 = ContextCompat.getColor(itemView.getContext(), R.color.material_green_300);
-        mGray300 = ContextCompat.getColor(itemView.getContext(), R.color.material_gray_300);
+        mGreen300 = ContextCompat.getColor(itemView.getContext(), R.color.colorPrimary);
+        mGray300 = ContextCompat.getColor(itemView.getContext(), R.color.color3);
     }
 
     public void bind(@NonNull AbstractChat chat) {
