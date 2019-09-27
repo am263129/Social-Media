@@ -215,6 +215,8 @@ public class register extends AppCompatActivity {
         myRef.setValue(gender);
         myRef = database.getReference(id+"/Membership");
         myRef.setValue(membership);
+        myRef = database.getReference(id+"/Private");
+        myRef.setValue("False");
         if (bitmap!=null) {
             myRef = database.getReference(id + "/Photo");
             myRef.setValue(getBase64String(bitmap));

@@ -19,8 +19,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import social.media.meeting.MainActivity;
 import social.media.meeting.R;
+import social.media.meeting.MainActivity;
 import social.media.meeting.Util.Global;
 
 public class login extends AppCompatActivity {
