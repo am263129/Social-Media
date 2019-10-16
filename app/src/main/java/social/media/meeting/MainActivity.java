@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import social.media.meeting.Util.Global;
+import social.media.meeting.chat.chat_room;
 import social.media.meeting.user.Member;
 import social.media.meeting.user.ViewMembers;
 
@@ -87,20 +88,20 @@ public class MainActivity extends AppCompatActivity {
                             if (user_security.equals("True"))
                                 security = true;
                             String base64photo = "";
-
-                            if(userEmail.equals(Global.current_user_email)) {
-                                Global.current_user_name = userName;
-
-                            }
                             try {
                                 base64photo = userData.get("Photo").toString();
-                                Global.current_user_photo = base64photo;
-                                setPhoto(base64photo);
                             }
                             catch (Exception e){
                                 Log.e(TAG,e.toString());
                             }
-                            array_all_members.add(new Member(userName, userEmail, userAddress, user_Birthday, user_Phone, user_Area, password, userGender, user_MemberShip, base64photo, security));
+
+                            if(userEmail.equals(Global.current_user_email)) {
+                                Global.current_user_name = userName;
+                                Global.current_user_photo = base64photo;
+                                setPhoto(base64photo);
+                            }
+                            else
+                                array_all_members.add(new Member(userName, userEmail, userAddress, user_Birthday, user_Phone, user_Area, password, userGender, user_MemberShip, base64photo, security));
                         }catch (Exception cce){
                             Log.e(TAG, cce.toString());
                         }
@@ -115,6 +116,46 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.w(TAG,"Failed to rad value ", databaseError.toException());
+            }
+        });
+
+        myRef = database.getReference("chats");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Global.array_all_chats.clear();
+                Global.array_my_chats.clear();
+                Global.chat_key.clear();
+                if (dataSnapshot.exists()){
+                    try {
+                        HashMap<String,Object> datamap = (HashMap<String ,Object>) dataSnapshot.getValue();
+
+                        for(String key: datamap.keySet()) {
+                            String test = key;
+                            Log.e(TAG, key);
+                            Object data = datamap.get(key);
+                            Global.array_all_chats.add(data);
+                            if (key.split("&")[0].equals(Global.current_user_name) || key.split("&")[1].equals(Global.current_user_name)){
+                                Global.array_my_chats.add(data);
+                                Global.chat_key.add(key);
+                            }
+                        }
+                    }
+                    catch (Exception e){
+                        Log.e(TAG, e.toString());
+                    }
+                }
+                try {
+                    chat_room.reset_list();
+                }
+                catch (Exception E){
+                    Log.e(TAG,E.toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
