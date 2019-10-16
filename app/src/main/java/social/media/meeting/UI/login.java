@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -35,10 +36,13 @@ public class login extends AppCompatActivity {
     private Integer VALID = 0;
     private Button login, register;
     private String TAG = "Login";
+
+    String MY_PREFS_NAME = "user_auth_info";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        verify();
         usernameEditText = findViewById(R.id.username);
         passwordEditText = findViewById(R.id.password);
         login = findViewById(R.id.login);
@@ -82,6 +86,19 @@ public class login extends AppCompatActivity {
 
     }
 
+    private void verify() {
+
+        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        String email = prefs.getString("email", "dummy user");//"No name defined" is the default value.
+        String verify = prefs.getString("verify", "FALSE");
+        if (!email.equals("dummy user") && verify.equals("TRUE")) {
+            Global.current_user_email = email;
+            Intent intent = new Intent(login.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
     private void login() {
         String username = String.valueOf(usernameEditText.getText());
         String password = String.valueOf(passwordEditText.getText());
@@ -98,10 +115,18 @@ public class login extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+
                             Global.current_user_email = user.getEmail();
                             Intent intent = new Intent(login.this, MainActivity.class);
                             startActivity(intent);
+
+
+                            SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                            editor.putString("email",Global.current_user_email);
+                            editor.putString("verify", "TRUE");
+                            editor.apply();
                             finish();
+
 
                         } else {
                             // If sign in fails, display a message to the user.

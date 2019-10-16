@@ -41,6 +41,7 @@ import java.util.Calendar;
 
 import social.media.meeting.MainActivity;
 import social.media.meeting.R;
+import social.media.meeting.Util.Global;
 
 public class register extends AppCompatActivity {
     EditText username_edt, email_edt, password_edt, address_edt, phone_edt, area_edt;
@@ -244,6 +245,7 @@ public class register extends AppCompatActivity {
                     Intent intent = new Intent(register.this, MainActivity.class);
                     startActivity(intent);
                     Toast.makeText(register.this,"New user Added Successfully!", Toast.LENGTH_LONG).show();
+                    Global.current_user_name = username_edt.getText().toString();
                     finish();
                 }else{
                     Toast.makeText(register.this,"New user Adding Failed!", Toast.LENGTH_LONG).show();

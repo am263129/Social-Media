@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="left"
+    android:orientation="horizontal"
+    android:padding="3dp">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/public_chat_avatar"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/dummy_user"
+        app:riv_corner_radius="70dp"
+        app:riv_mutate_background="false"
+        app:riv_oval="false" />
+
+    <me.himanshusoni.chatmessageview.ChatMessageView
+        android:id="@+id/chatMessageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cmv_arrowGravity="start"
+        app:cmv_arrowMargin="3dp"
+        app:cmv_arrowPosition="left"
+        app:cmv_backgroundColor="#8800bcd4"
+        app:cmv_backgroundColorPressed="#ff00bcd4"
+        app:cmv_contentPadding="10dp"
+        app:cmv_cornerRadius="3dp"
+        app:cmv_showArrow="true">
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    </me.himanshusoni.chatmessageview.ChatMessageView>
+
+</LinearLayout>

@@ -83,7 +83,7 @@ public class chat_room extends AppCompatActivity {
                     String sub_id;
                     String chat_id;
                     if (chat_key == null){
-                        sub_id = Global.current_user_name+ "&"+partner_name;
+                         sub_id = Global.current_user_name+ "&"+partner_name;
                         chat_id = "0001";
                     }
 

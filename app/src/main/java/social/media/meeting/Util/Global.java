@@ -1,7 +1,10 @@
 package social.media.meeting.Util;
 
+import android.widget.ArrayAdapter;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
@@ -17,6 +20,7 @@ public class Global {
     public static ArrayList<Object> array_my_chats = new ArrayList<Object>();
     public static ArrayList<String> chat_key = new ArrayList<String>();
     public static ArrayList<Member> All_members = new ArrayList<Member>();
+    public static ArrayList<chat> array_public_chats =  new ArrayList<chat>();
 
     public static String getToday() {
         Date currentTime = Calendar.getInstance().getTime();
