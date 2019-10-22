@@ -17,6 +17,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -60,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         mainActivity = this;
         startService(new Intent(this, call_service.class));
         setContentView(R.layout.activity_main);
-        Button viewMember = (Button)findViewById(R.id.view_member);
-        final Button public_chat = (Button)findViewById(R.id.btn_public_chat);
+        LinearLayout viewMember = (LinearLayout)findViewById(R.id.btn_private_chat);
+        final LinearLayout public_chat = (LinearLayout)findViewById(R.id.btn_public_chat);
         viewMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

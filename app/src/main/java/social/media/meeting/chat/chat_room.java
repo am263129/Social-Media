@@ -72,12 +72,7 @@ public class chat_room extends AppCompatActivity {
         avatar = (RoundedImageView)findViewById(R.id.avatar);
         name_partner = (TextView)findViewById(R.id.partner_name);
         email_partner= (TextView)findViewById(R.id.partner_email);
-
         chat_key = null;
-
-
-
-
 
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -226,6 +221,5 @@ public class chat_room extends AppCompatActivity {
         super.onStop();
         Global.chat_room_running = false;
     }
-
 
 }

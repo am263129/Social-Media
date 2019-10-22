@@ -47,11 +47,12 @@ public class ViewMembers extends AppCompatActivity {
             }
         });
     }
-    public static void refresh(){
-        MemberAdapter_list adapter = new MemberAdapter_list(ViewMembers.getInstance(),R.layout.item_user_list,array_all_members);
-        all_members.setAdapter(adapter);
-    }
 
+
+    /**
+     * reset the data of Firebase after read chat message
+     * @param name: name of chat message sender.
+     */
     private void reset_read_status(String name) {
         String key="";
         ArrayList<String> array_sub_key = new ArrayList<String>();
@@ -73,6 +74,15 @@ public class ViewMembers extends AppCompatActivity {
             }
         }
 
+    }
+
+    /**
+     * Refresh the list after change array.
+     * from anywhere.
+     */
+    public static void refresh(){
+        MemberAdapter_list adapter = new MemberAdapter_list(ViewMembers.getInstance(),R.layout.item_user_list,array_all_members);
+        all_members.setAdapter(adapter);
     }
 
     public static ViewMembers getInstance(){
