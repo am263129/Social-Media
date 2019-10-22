@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -36,6 +37,7 @@ public class login extends AppCompatActivity {
     private Integer VALID = 0;
     private Button login, register;
     private String TAG = "Login";
+    private CheckBox remember_me;
 
     String MY_PREFS_NAME = "user_auth_info";
     @Override
@@ -49,6 +51,7 @@ public class login extends AppCompatActivity {
         register = findViewById(R.id.register);
         loading = (ProgressBar)findViewById(R.id.loading);
         ProgressBar loadingProgressBar = findViewById(R.id.loading);
+        remember_me = (CheckBox)findViewById(R.id.cbx_remember);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,11 +123,12 @@ public class login extends AppCompatActivity {
                             Intent intent = new Intent(login.this, MainActivity.class);
                             startActivity(intent);
 
-
-                            SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                            editor.putString("email",Global.current_user_email);
-                            editor.putString("verify", "TRUE");
-                            editor.apply();
+                            if (remember_me.isChecked()) {
+                                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                                editor.putString("email", Global.current_user_email);
+                                editor.putString("verify", "TRUE");
+                                editor.apply();
+                            }
                             finish();
 
 

@@ -20,7 +20,8 @@
             android:layout_marginTop="30dp"
             android:layout_marginRight="20dp"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:background="@android:drawable/screen_background_dark_transparent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,14 +49,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/username"
-                            android:textColor="@color/textcolor" />
+                            android:textColor="@color/white" />
 
                         <EditText
                             android:id="@+id/username_edt"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:inputType="textPersonName"
-                            android:textColor="@color/textcolor" />
+                            android:textColor="@color/white" />
 
                     </LinearLayout>
 
@@ -79,7 +80,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="@string/add_photo"
-                            android:textColor="@color/textcolor" />
+                            android:textColor="@color/white" />
 
 
                     </LinearLayout>
@@ -97,14 +98,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Email"
-                        android:textColor="@color/textcolor" />
+                        android:textColor="@color/white" />
 
                     <EditText
                         android:id="@+id/email_edt"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:inputType="textEmailAddress"
-                        android:textColor="@color/textcolor" />
+                        android:textColor="@color/white" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -116,14 +117,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Address"
-                        android:textColor="@color/textcolor" />
+                        android:textColor="@color/white" />
 
                     <EditText
                         android:id="@+id/address_edt"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:inputType="textEmailAddress"
-                        android:textColor="@color/textcolor" />
+                        android:textColor="@color/white" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -135,7 +136,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Birthday"
-                        android:textColor="@color/textcolor" />
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/birthday_edt"
@@ -144,7 +145,8 @@
                         android:gravity="center_vertical"
                         android:hint="click to input birthday"
                         android:inputType="textEmailAddress|phone"
-                        android:textColor="@color/textcolor" />
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/silver" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -156,14 +158,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Phone"
-                        android:textColor="@color/textcolor" />
+                        android:textColor="@color/white" />
 
                     <EditText
                         android:id="@+id/phone_edt"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:inputType="textEmailAddress|phone"
-                        android:textColor="@color/textcolor" />
+                        android:textColor="@color/white" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -175,14 +177,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Area"
-                        android:textColor="@color/textcolor" />
+                        android:textColor="@color/white" />
 
                     <EditText
                         android:id="@+id/area_edt"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:inputType="textPostalAddress|textEmailAddress"
-                        android:textColor="@color/textcolor" />
+                        android:textColor="@color/white" />
 
                 </LinearLayout>
 
@@ -195,14 +197,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/password"
-                        android:textColor="@color/textcolor" />
+                        android:textColor="@color/white" />
 
                     <EditText
                         android:id="@+id/password_edt"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:inputType="textPassword"
-                        android:textColor="@color/textcolor" />
+                        android:textColor="@color/white" />
 
                 </LinearLayout>
 
@@ -215,7 +217,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/gender"
-                        android:textColor="@color/textcolor" />
+                        android:textColor="@color/white" />
 
                     <RadioGroup
                         android:id="@+id/genderrb"
@@ -230,7 +232,7 @@
                             android:layout_height="wrap_content"
                             android:checked="true"
                             android:text="@string/male"
-                            android:textColor="@color/common_google_signin_btn_text_light_pressed" />
+                            android:textColor="@color/white" />
 
                         <RadioButton
                             android:id="@+id/femalerb"
@@ -239,7 +241,7 @@
                             android:layout_marginLeft="20dp"
                             android:checked="false"
                             android:text="@string/female"
-                            android:textColor="@color/common_google_signin_btn_text_light_pressed" />
+                            android:textColor="@color/white" />
 
 
                     </RadioGroup>
@@ -254,7 +256,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="MemberShip"
-                        android:textColor="@color/textcolor" />
+                        android:textColor="@color/white" />
 
                     <RadioGroup
                         android:id="@+id/memberrb"
@@ -270,7 +272,7 @@
                             android:layout_weight="3"
                             android:checked="true"
                             android:text="Normal"
-                            android:textColor="@color/common_google_signin_btn_text_light_pressed" />
+                            android:textColor="@color/white" />
 
                         <RadioButton
                             android:id="@+id/member_advanced"
@@ -279,7 +281,7 @@
                             android:layout_weight="3.5"
                             android:checked="false"
                             android:text="Advanced"
-                            android:textColor="@color/common_google_signin_btn_text_light_pressed" />
+                            android:textColor="@color/white" />
 
                         <RadioButton
                             android:id="@+id/member_pro"
@@ -288,7 +290,7 @@
                             android:layout_weight="4"
                             android:checked="false"
                             android:text="Professional"
-                            android:textColor="@color/common_google_signin_btn_text_light_pressed" />
+                            android:textColor="@color/white" />
 
 
                     </RadioGroup>
@@ -303,14 +305,14 @@
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/selector_btn_uncomplete"
                     android:text="Register"
-                    android:textColor="@color/textcolor" />
+                    android:textColor="@color/white" />
 
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
+                android:layout_height="100dp">
 
 
             </LinearLayout>

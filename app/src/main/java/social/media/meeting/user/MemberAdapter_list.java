@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -19,6 +20,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import social.media.meeting.R;
+import social.media.meeting.Util.Global;
 
 
 public class MemberAdapter_list extends ArrayAdapter <Member> implements Filterable {
@@ -48,6 +50,7 @@ public class MemberAdapter_list extends ArrayAdapter <Member> implements Filtera
         TextView user_gender = (TextView) v.findViewById(R.id.user_gender);
         TextView user_designation = (TextView)v.findViewById(R.id.user_designation);
         RoundedImageView user_photo = (RoundedImageView) v.findViewById(R.id.roundedImageViewLovesItemLovesImage);
+        ImageView ico_unread_msg = (ImageView)v.findViewById(R.id.ico_unread_msg);
         String userName = array_all_members.get(position).getName();
         String userEmail = array_all_members.get(position).getEmail();
         String userGender = array_all_members.get(position).getGender();
@@ -57,7 +60,16 @@ public class MemberAdapter_list extends ArrayAdapter <Member> implements Filtera
         user_email.setText(userEmail);
         user_gender.setText(userGender);
         user_designation.setText(userDesignation);
-
+        boolean read_status = true;
+        for (Integer i = 0 ; i < Global.array_unread_chat_sender.size(); i ++){
+            if (Global.array_unread_chat_sender.get(i).getSender().equals(userName))
+            {
+                read_status = false;
+                break;
+            }
+        }
+        if (!read_status)
+            ico_unread_msg.setVisibility(View.VISIBLE);
         String base64photo = array_all_members.get(position).getPhoto();
         if (base64photo.equals("")) {
             if (array_all_members.get(position).getGender().equals("Male"))

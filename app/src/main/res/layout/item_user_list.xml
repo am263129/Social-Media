@@ -13,15 +13,27 @@
         android:padding="10dp"
         android:background="@drawable/border">
 
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/roundedImageViewLovesItemLovesImage"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/dummy_user"
-            app:riv_corner_radius="70dp"
-            app:riv_mutate_background="false"
-            app:riv_oval="false" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/roundedImageViewLovesItemLovesImage"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/dummy_user"
+                app:riv_corner_radius="70dp"
+                app:riv_mutate_background="false"
+                app:riv_oval="false" />
+
+            <ImageView
+                android:id="@+id/ico_unread_msg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/new_chat_icon" />
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/lockscreen"
+    android:background="@drawable/spalish"
     tools:context=".UI.LoginActivity">
 
     <ScrollView
@@ -34,7 +34,7 @@
                     android:layout_gravity="start"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="64dp"
-                    android:background="@drawable/selector_btn_next"
+                    android:background="@android:drawable/screen_background_dark_transparent"
                     android:text="Log In"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +48,7 @@
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_gravity="start"
-                    android:background="@drawable/selector_btn_next"
+                    android:background="@android:drawable/screen_background_dark_transparent"
                     android:text="Register"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -104,6 +104,16 @@
                     app:layout_constraintStart_toStartOf="@+id/password"
                     app:layout_constraintTop_toBottomOf="@+id/password"
                     app:layout_constraintVertical_bias="0.3" />
+
+                <CheckBox
+                    android:id="@+id/cbx_remember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Remember Me"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toTopOf="@+id/loading"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/password" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
@@ -114,4 +124,4 @@
         </LinearLayout>
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

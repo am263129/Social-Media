@@ -14,7 +14,7 @@
     <string name="Error_empty_email">Please input Email Address</string>
     <string name="Error_empty_password">Please input Password</string>
     <string name="username">Username</string>
-    <string name="add_photo">Add Photo</string>
+    <string name="add_photo">User Avatar</string>
     <string name="gender">Gender</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
@@ -169,4 +169,5 @@
     <string name="menu_add_data">Add Data</string>
     <string name="hint_message">Say something…</string>
     <string name="paging_finished_message">Reached End of List</string>
+    <string name="reply_label">Reply</string>
 </resources>

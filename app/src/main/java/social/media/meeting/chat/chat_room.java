@@ -47,6 +47,8 @@ public class chat_room extends AppCompatActivity {
     static String CHAT_CONTENT = "Chat_Content";
     static String CHAT_TYPE = "Chat_Type";
     static String CHAT_CREATED_DATE = "Chat_Created_Date";
+    static String CHAT_STATUS = "Chat_Status";
+    static String CHAT_NOTIFICATION = "Chat_Notification";
 
 
     static ArrayList<chat> array_chat = new ArrayList<chat>();
@@ -72,6 +74,10 @@ public class chat_room extends AppCompatActivity {
         email_partner= (TextView)findViewById(R.id.partner_email);
 
         chat_key = null;
+
+
+
+
 
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +115,10 @@ public class chat_room extends AppCompatActivity {
                     myRef.setValue("Text");
                     myRef = database.getReference(id+CHAT_CREATED_DATE);
                     myRef.setValue(Global.getToday());
+                    myRef = database.getReference(id+CHAT_STATUS);
+                    myRef.setValue("Unread");
+                    myRef = database.getReference(id+CHAT_NOTIFICATION);
+                    myRef.setValue("Unmade");
 
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
@@ -132,6 +142,14 @@ public class chat_room extends AppCompatActivity {
 
         Intent intent = getIntent();
         Integer index = intent.getIntExtra("call", 0);
+        String base = null;
+        try {
+            base = intent.getStringExtra("From");
+        }catch (Exception E){}
+        if (base != null){
+            String receiver = intent.getStringExtra("Receiver");
+            String message = intent.getStringExtra("Content");
+        }
         partner_name  = Global.All_members.get(index).getName();
         String base64photo = Global.All_members.get(index).getPhoto();
         String imageDataBytes = base64photo.substring(base64photo.indexOf(",") + 1);
@@ -164,7 +182,13 @@ public class chat_room extends AppCompatActivity {
                             String chat_type = chat_detail.get(CHAT_TYPE).toString();
                             String chat_created_date = chat_detail.get(CHAT_CREATED_DATE).toString();
 
-                            chat chat = new chat(chat_id, chat_sender, chat_content, chat_type, chat_created_date);
+                            String chat_status = "";
+                            try {
+                                chat_status = chat_detail.get(CHAT_STATUS).toString();
+                            }
+                            catch (Exception E){}
+
+                            chat chat = new chat(chat_id, chat_sender, chat_content, chat_type, chat_created_date,chat_status);
                             array_chat.add(chat);
                         } catch (Exception E) {
                             Log.e(TAG, E.toString());
@@ -189,6 +213,18 @@ public class chat_room extends AppCompatActivity {
     private static chat_room getInstance(){
 
         return self;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Global.chat_room_running = true;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Global.chat_room_running = false;
     }
 
 

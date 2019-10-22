@@ -8,10 +8,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -32,6 +35,7 @@ import social.media.meeting.Util.Global;
 import social.media.meeting.chat.chat;
 import social.media.meeting.chat.chat_room;
 import social.media.meeting.chat.public_chat_room;
+import social.media.meeting.service.call_service;
 import social.media.meeting.user.Member;
 import social.media.meeting.user.ViewMembers;
 
@@ -46,11 +50,15 @@ public class MainActivity extends AppCompatActivity {
     static String CHAT_CONTENT = "Chat_Content";
     static String CHAT_TYPE = "Chat_Type";
     static String CHAT_CREATED_DATE = "Chat_Created_Date";
+    static String CHAT_STATUS = "Chat_Status";
+    static MainActivity mainActivity;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mainActivity = this;
+        startService(new Intent(this, call_service.class));
         setContentView(R.layout.activity_main);
         Button viewMember = (Button)findViewById(R.id.view_member);
         final Button public_chat = (Button)findViewById(R.id.btn_public_chat);
@@ -68,8 +76,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        dialog = new ProgressDialog(MainActivity.this);
-        dialog.setTitle("Please Wait");
+        dialog = new Dialog(MainActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.setContentView(R.layout.progress_dialog);
         dialog.setCancelable(false);
         dialog.show();
         initData();
@@ -202,7 +212,12 @@ public class MainActivity extends AppCompatActivity {
                                 String chat_content = public_chat.get(CHAT_CONTENT).toString();
                                 String chat_type = public_chat.get(CHAT_TYPE).toString();
                                 String chat_created_date = public_chat.get(CHAT_CREATED_DATE).toString();
-                                chat chat = new chat(chat_id, chat_sender, chat_content, chat_type, chat_created_date);
+                                String chat_status = "";
+                                try {
+                                    chat_status = public_chat.get(CHAT_STATUS).toString();
+                                }
+                                catch (Exception E){}
+                                chat chat = new chat(chat_id, chat_sender, chat_content, chat_type, chat_created_date,chat_status);
                                 Global.array_public_chats.add(chat);
                             } catch (Exception E) {
                                 Log.e(TAG, E.toString());
@@ -238,5 +253,8 @@ public class MainActivity extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeStream(stream);
 //        ImageView userPhoto  = (ImageView)navigationView.getHeaderView(0).findViewById(R.id.nav_header_userphoto);
 //        userPhoto.setImageBitmap(bitmap);
+    }
+    public static MainActivity getInstance(){
+        return mainActivity;
     }
 }

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".chat.public_chat_room"></activity>
+        <activity android:name=".chat.public_chat_room" />
         <activity android:name=".chat.chat_room" />
         <activity android:name=".user.ViewMembers" />
         <activity android:name=".UI.login">
@@ -25,6 +25,11 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <service
+            android:name=".service.call_service"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

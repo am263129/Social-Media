@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.Date;
 
 import social.media.meeting.chat.chat;
+import social.media.meeting.chat.unread_chat;
 import social.media.meeting.user.Member;
 
 public class Global {
@@ -21,6 +22,10 @@ public class Global {
     public static ArrayList<String> chat_key = new ArrayList<String>();
     public static ArrayList<Member> All_members = new ArrayList<Member>();
     public static ArrayList<chat> array_public_chats =  new ArrayList<chat>();
+    public static ArrayList<unread_chat> array_unread_chat_sender = new ArrayList<unread_chat>();
+
+
+    public static boolean chat_room_running = false;
 
     public static String getToday() {
         Date currentTime = Calendar.getInstance().getTime();
